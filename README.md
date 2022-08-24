@@ -10,6 +10,7 @@ To stop the server run:
 
 ```bash
 docker-compose down
+```
 
 ## Links to Documentation
 
