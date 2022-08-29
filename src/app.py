@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 import csv
 
-def find_name(name):
+def find_person(name):
     with open("data.csv", newline="") as file:
         data = csv.DictReader(file)
         for line in data:
@@ -21,10 +21,10 @@ def user():
 
 @app.route('/user/<user_name>')
 def get_user(user_name):
-    user_data = find_name(user_name)
+    user_data = find_person(user_name)
     if user_data == "Not found":
-        return "Not found", 404
-    
+        return jsonify(f"{user_name} not found"), 404
+
     return jsonify({"firstName": user_data['fname'], "last_name": user_data['lname']})
 
 if __name__ == '__main__':
