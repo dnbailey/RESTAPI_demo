@@ -1,7 +1,6 @@
 from flask import request, abort
 import csv
 
-
 def parse(filename):
     with open(filename, newline="") as file:
         data = csv.DictReader(file)
@@ -16,7 +15,6 @@ def require_apikey(route_function):
         else:
             abort(401)
     return decorated_function
-
 
 if __name__ == "__main__":
     print("This should not be ran standalone.")
